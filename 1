@@ -1,0 +1,38 @@
+"""
+Solutions to the programming problems from coding-j.
+
+Author: Will Holden-Wingate
+"""
+
+def compute_quizzes_needed():
+  """
+  
+  Calculates how many quizzes you need to take to get a quiz average of 9.5.
+  
+  """
+  grades = eval(input("Enter quiz scores received so far: "))
+  if not grades:
+    print("You need 1 more quiz")
+    print("Your input list may be empty.")
+    return
+  num_quizzes_needed = 0
+  while True:
+    avg_grade = sum(grades) / (len(grades) + num_quizzes_needed)
+    if avg_grade >= 9.5:
+      return 
+    num_quizzes_needed += 1
+  if num_quizzes_needed == 0:
+    print("You need 0 more quizzes")
+    print("Your average is already 9.5, so no future quizzes are needed.")
+    
+  elif num_quizzes_needed == 1:
+    print("You need 1 more quiz")
+    
+  else:
+    print("You need " + str(num_quizzes_needed) + " more quizzes")
+    
+  for i in range(num_quizzes_needed):
+    grades.append(10)
+    avg_grade = sum(grades) / (len(grades))
+  print("With quiz " + str(len(grades)) + ", your average is " + str(avg_grade))
+compute_quizzes_needed()
